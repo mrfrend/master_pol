@@ -10,6 +10,7 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt
 from res.colors import ACCENT_COLOR, SECONDARY_COLOR, ACCENT_COLOR_HOVER
 from res.fonts import MAIN_FONT
+from database.db import db
 
 
 class AuthPage(QWidget):
@@ -45,9 +46,25 @@ class AuthPage(QWidget):
 
         self.setLayout(self.main_layout)
         self.main_layout.addWidget(self.title, alignment=Qt.AlignmentFlag.AlignHCenter)
+
         self.main_layout.addStretch()
         self.main_layout.addLayout(self.form_layout)
         self.main_layout.addStretch()
+
+        self.login_button.clicked.connect(self.handle_login)
+
+    def handle_login(self):
+        username = self.username_input.text()
+        password = self.password_input.text()
+
+        if not username or not password:
+            QMessageBox.warning(self, "Ошибка", "Пожалуйста, заполните все поля.")
+            return
+
+        if db and db.authorize_user(username, password):
+            QMessageBox.information(self, "Успех", "Авторизация успешна!")
+        else:
+            QMessageBox.critical(self, "Ошибка", "Неверный логин или пароль.")
 
     def set_styles(self):
         self.setStyleSheet(

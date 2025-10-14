@@ -10,7 +10,13 @@ class Database:
             database=db,
             cursorclass=psql.cursors.DictCursor,
         )
-        self.cursor = self.connection.cursor()
+
+    def authorize_user(self, username, password):
+        query = "SELECT * FROM users WHERE username=%s AND password=%s"
+        with self.connection.cursor() as cur:
+            cur.execute(query, (username, password))
+            result = cur.fetchone()
+            return result is not None
 
 
 db = None
