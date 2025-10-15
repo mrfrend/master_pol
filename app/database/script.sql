@@ -134,7 +134,7 @@ CREATE TABLE `partners_rating_history` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
 	`partner_id` INTEGER NOT NULL,
 	`new_rating` INTEGER NOT NULL,
-	`changed` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`changed` DATETIME NOT NULL,
 	PRIMARY KEY(`id`)
 );
 
@@ -145,7 +145,7 @@ CREATE TABLE `orders` (
 	`manager_id` INTEGER NOT NULL,
 	`total_price` DECIMAL(10,2) NOT NULL,
 	`order_payment` DECIMAL(10,2) NOT NULL DEFAULT 0,
-	`created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`created` DATETIME NOT NULL,
 	`status` ENUM('created', 'waiting prepayment', 'prepayment received', 'completed', 'canceled', 'ready for shipment', 'pending', 'in production') NOT NULL,
 	`prepayment_date` DATETIME,
 	`payment_date` DATETIME,
@@ -177,7 +177,7 @@ CREATE TABLE `materials_supply_history` (
 	`material_id` INTEGER NOT NULL,
 	`supplier_id` INTEGER NOT NULL,
 	`quantity` INTEGER NOT NULL,
-	`delivery_date` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`delivery_date` DATE NOT NULL,
 	PRIMARY KEY(`id`)
 );
 
@@ -187,7 +187,7 @@ CREATE TABLE `materials_movement` (
 	`material_id` INTEGER NOT NULL,
 	`amount` INTEGER NOT NULL,
 	`movement_type` ENUM('incoming', 'reserve', 'write off') NOT NULL DEFAULT 'incoming',
-	`movement_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`movement_date` DATETIME NOT NULL,
 	PRIMARY KEY(`id`)
 );
 
@@ -196,7 +196,7 @@ CREATE TABLE `employees_access` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
 	`employee_id` INTEGER NOT NULL,
 	`door_id` INTEGER NOT NULL,
-	`access_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`access_date` DATETIME NOT NULL,
 	PRIMARY KEY(`id`)
 );
 
@@ -346,7 +346,7 @@ VALUES
 -- Пользователи, связанные с менеджерами
 INSERT INTO users (username, password, employee_id)
 VALUES
-('manager_ivan', 'hashed_password_123', 1),
+('ivan', 'test', 1),
 ('manager_maria', 'hashed_password_456', 2);
 
 
