@@ -62,7 +62,11 @@ class AuthPage(QWidget):
             return
 
         if db and db.authorize_user(username, password):
-            QMessageBox.information(self, "Успех", "Авторизация успешна!")
+            from pages.partners_page import PartnersPage
+
+            self.partners_page = PartnersPage()
+            self.partners_page.show()
+            self.close()
         else:
             QMessageBox.critical(self, "Ошибка", "Неверный логин или пароль.")
 

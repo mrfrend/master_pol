@@ -352,7 +352,7 @@ VALUES
 
 CREATE VIEW show_partners
 AS
-SELECT pt.name AS type_name, p.partner_name, p.first_name_director, p.last_name_director, p.middle_name_director, p.phone_partner, p.rating
+SELECT p.id, pt.name AS type_name, p.partner_name, p.first_name_director, p.last_name_director, p.middle_name_director, p.phone_partner, p.rating
 FROM partners p JOIN partners_type pt
 ON
 p.partner_type_id = pt.id;
