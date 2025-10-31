@@ -7,10 +7,12 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from dataclasses import dataclass
 
 
 class Ui_Frame(object):
     def setupUi(self, Frame):
+
         Frame.setObjectName("Frame")
         Frame.resize(400, 340)
         Frame.setStyleSheet("background-color: rgb(95, 95, 95);")
@@ -21,36 +23,44 @@ class Ui_Frame(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.comany = QtWidgets.QLabel(parent=Frame)
-        self.comany.setStyleSheet("color: rgb(121, 165, 100);\n"
-"font: 75 12pt \"MS Shell Dlg 2\";")
+        self.comany.setStyleSheet(
+            "color: rgb(121, 165, 100);\n" 'font: 75 12pt "MS Shell Dlg 2";'
+        )
         self.comany.setObjectName("comany")
-        self.horizontalLayout.addWidget(self.comany, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.horizontalLayout.addWidget(
+            self.comany, 0, QtCore.Qt.AlignmentFlag.AlignLeft
+        )
         self.percentage = QtWidgets.QLabel(parent=Frame)
-        self.percentage.setStyleSheet("color: rgb(121, 165, 70);\n"
-"font: 75 12pt \"MS Shell Dlg 2\";")
+        self.percentage.setStyleSheet(
+            "color: rgb(121, 165, 70);\n" 'font: 75 12pt "MS Shell Dlg 2";'
+        )
         self.percentage.setObjectName("percentage")
-        self.horizontalLayout.addWidget(self.percentage, 0, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.horizontalLayout.addWidget(
+            self.percentage, 0, QtCore.Qt.AlignmentFlag.AlignRight
+        )
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.ceo = QtWidgets.QLabel(parent=Frame)
-        self.ceo.setStyleSheet("color: rgb(121, 165, 100);\n"
-"font: 75 12pt \"MS Shell Dlg 2\";\n"
-"")
+        self.ceo.setStyleSheet(
+            "color: rgb(121, 165, 100);\n" 'font: 75 12pt "MS Shell Dlg 2";\n' ""
+        )
         self.ceo.setObjectName("ceo")
         self.verticalLayout.addWidget(self.ceo)
         self.name = QtWidgets.QLabel(parent=Frame)
-        self.name.setStyleSheet("color: rgb(121, 165, 100);\n"
-"font: 75 12pt \"MS Shell Dlg 2\";")
+        self.name.setStyleSheet(
+            "color: rgb(121, 165, 100);\n" 'font: 75 12pt "MS Shell Dlg 2";'
+        )
         self.name.setObjectName("name")
         self.verticalLayout.addWidget(self.name)
         self.contacts = QtWidgets.QLabel(parent=Frame)
-        self.contacts.setStyleSheet("color: rgb(121, 165, 100);\n"
-"font: 75 12pt \"MS Shell Dlg 2\";\n"
-"")
+        self.contacts.setStyleSheet(
+            "color: rgb(121, 165, 100);\n" 'font: 75 12pt "MS Shell Dlg 2";\n' ""
+        )
         self.contacts.setObjectName("contacts")
         self.verticalLayout.addWidget(self.contacts)
         self.label = QtWidgets.QLabel(parent=Frame)
-        self.label.setStyleSheet("color: rgb(121, 165, 100);\n"
-"font: 75 12pt \"MS Shell Dlg 2\";")
+        self.label.setStyleSheet(
+            "color: rgb(121, 165, 100);\n" 'font: 75 12pt "MS Shell Dlg 2";'
+        )
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
         self.verticalLayout_2.addLayout(self.verticalLayout)
@@ -69,8 +79,45 @@ class Ui_Frame(object):
         self.label.setText(_translate("Frame", "Рейтинг:"))
 
 
+@dataclass
+class PartnerCardInfo:
+    id: int
+    type_name: str
+    partner_name: str
+    first_name: str
+    last_name: str
+    middle_name: str | None
+    phone_partner: str
+    rating: int
+    discount: int
+
+# TODO: сделать дабклик
+class PartnerCard(QtWidgets.QFrame):
+    double_clicked = QtCore.pyqtSignal(PartnerCardInfo)
+    def __init__(self, partner_info: PartnerCardInfo):
+        super().__init__()
+        self.ui = Ui_Frame()
+        self.partner_info = partner_info
+        self.ui.setupUi(self)
+        self.setData()  
+
+    def mouseDoubleClickEvent(self, a0):
+        self.double_clicked.emit(self.partner_info)
+        return super().mouseDoubleClickEvent(a0)
+    def setData(self):
+        fio = f"{self.partner_info.last_name} {self.partner_info.first_name} {self.partner_info.middle_name or ''}"
+        self.ui.name.setText(fio)
+        self.ui.percentage.setText(f"{str(self.partner_info.discount)}%")
+        self.ui.contacts.setText(self.partner_info.phone_partner)
+        self.ui.comany.setText(
+            f"{self.partner_info.type_name} | {self.partner_info.partner_name}"
+        )
+        self.ui.label.setText(f"Рейтинг: {str(self.partner_info.rating)}")
+
+
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Frame = QtWidgets.QFrame()
     ui = Ui_Frame()
