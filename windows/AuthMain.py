@@ -29,6 +29,7 @@ class AuthWindow(QtWidgets.QMainWindow):
 
             self.partners = Partners()
             self.partners.show()
+            self.close()
 
         else:
             QtWidgets.QMessageBox.warning(self, "Error", "Ошибка")

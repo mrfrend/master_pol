@@ -1,4 +1,4 @@
-CREATE DATABASE master_pol;
+CREATE DATABASE IF NOT EXISTS master_pol;
 use master_pol;
 
 CREATE TABLE `partners` (
