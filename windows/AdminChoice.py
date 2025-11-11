@@ -1,5 +1,5 @@
-from .select import Ui_Dialog
 from PyQt6.QtWidgets import QDialog
+from interface.select import Ui_Dialog
 from .editPartner import EditPartner
 
 class Admin(QDialog):

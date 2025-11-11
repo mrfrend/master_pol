@@ -159,24 +159,3 @@ class Ui_MainWindow(object):
             )
         )
         self.AutoButton.setText(_translate("MainWindow", "Войти"))
-
-
-class AuthWindow(QtWidgets.QMainWindow):
-    def __init__(self):
-        super().__init__() # QMainWindow.__init__()
-        self.ui = Ui_MainWindow() # Интерфейс
-        self.ui.setupUi(self) # Загрузка интерфейса в наш класс с логикой
-        self.ui.AutoButton.clicked.connect(self.handle_click)
-
-    def handle_click(self):
-        username = self.ui.lineEdit.text()
-        password = self.ui.lineEdit_2.text()
-
-        if db.authorize_user(username, password):
-            QtWidgets.QMessageBox.information(self, "Успех", "Авторизованы")
-            from ui_py.Partners import Partners
-            self.partners = Partners()
-            self.partners.show()
-
-        else:
-            QtWidgets.QMessageBox.warning(self, "Error", "Ошибка")

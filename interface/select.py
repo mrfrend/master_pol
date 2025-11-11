@@ -209,13 +209,3 @@ class Ui_Dialog(object):
         self.save_button.setText(_translate("Dialog", "Редактирвоать"))
         self.save_button_2.setText(_translate("Dialog", "Удалить"))
         self.save_button_3.setText(_translate("Dialog", "Просмотреть историю"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec())

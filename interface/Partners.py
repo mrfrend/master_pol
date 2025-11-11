@@ -7,8 +7,6 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from database.Database import db
-from ui_py.PartnerCard import PartnerCard, PartnerCardInfo
 
 
 class Ui_Partners(object):
@@ -149,66 +147,3 @@ class Ui_Partners(object):
         Partners.setWindowTitle(_translate("Partners", "MainWindow"))
         self.label.setText(_translate("Partners", "Партнёры"))
         self.AutoButton.setText(_translate("Partners", "Добавить партнера"))
-
-
-class Partners(QtWidgets.QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.ui = Ui_Partners()
-        self.ui.setupUi(self)
-        self.ui.AutoButton.clicked.connect(self.on_clicked_add)
-        self.load_partners()
-
-    def load_partners(self):
-        partners = db.show_partners()  # много строчек
-        for partner in partners:
-            discount = db.get_disc(int(partner["id"]))
-            with db.connection.cursor() as cur:
-                cur.execute(
-                    "SELECT email_partner, address, INN FROM partners WHERE id = %s",
-                    (partner["id"],),
-                )
-                result = cur.fetchone()
-                partner.update(result)
-
-            partner_info = PartnerCardInfo(
-                partner["id"],
-                partner["type_name"],
-                partner["partner_name"],
-                partner["first_name_director"],
-                partner["last_name_director"],
-                partner["middle_name_director"],
-                partner["email_partner"],
-                partner["phone_partner"],
-                partner["address"],
-                partner["INN"],
-                partner["rating"],
-                discount,
-            )
-            partnerCard = PartnerCard(partner_info)
-            partnerCard.double_clicked.connect(self.load_choices)
-            self.ui.verticalLayout_2.addWidget(partnerCard)
-
-    # TODO: обработать двойной клик по карточке
-    def load_choices(self, partner_info: PartnerCardInfo):
-        from ui_py.AdminChoice import Admin
-
-        self.Admin = Admin(partner_info)
-        self.Admin.show()
-
-    def on_clicked_add(self, partner_info):
-        from ui_py.AddPartner import AddPartner
-
-        self.AddPartner = AddPartner(partner_info)
-        self.AddPartner.show()
-
-
-if __name__ == "__main__":
-    import sys
-
-    app = QtWidgets.QApplication(sys.argv)
-    Partners = QtWidgets.QMainWindow()
-    ui = Ui_Partners()
-    ui.setupUi(Partners)
-    Partners.show()
-    sys.exit(app.exec())
