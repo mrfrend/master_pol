@@ -28,15 +28,21 @@ class Database:
     def get_disc(self, partner_id: int):
         with self.connection.cursor() as cur:
             cur.execute("SELECT get_disc(%s)", (partner_id,))
-            result = cur.fetchone() # {"get_disc(4)": 15}
+            result = cur.fetchone()  # {"get_disc(4)": 15}
             print(result)
             return result.get(f"get_disc({partner_id})")
-    
+
     def get_partners_types(self):
         with self.connection.cursor() as cur:
             cur.execute("SELECT id, name from partners_type")
             result = cur.fetchall()
             return result
+
+    def delete_partner(self, partner_id: int):
+        with self.connection.cursor() as cur:
+            cur.execute("DELETE FROM partners WHERE id = %s", (partner_id,))
+            self.connection.commit()
+            return
 
 
 db = Database(host="localhost", user="root", password="", db="master_pol")
