@@ -8,12 +8,16 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from .PartnerCard import PartnerCardInfo
+from database.Database import db
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(820, 450)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
@@ -35,10 +39,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label.setFont(font)
         self.label.setObjectName("label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label)
+        self.formLayout.setWidget(
+            0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label
+        )
         self.typeBox = QtWidgets.QComboBox(parent=self.formLayoutWidget)
         self.typeBox.setObjectName("typeBox")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.typeBox)
+        self.formLayout.setWidget(
+            0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.typeBox
+        )
         self.label_2 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -46,10 +54,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_2)
+        self.formLayout.setWidget(
+            1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_2
+        )
         self.partner_name_edit = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.partner_name_edit.setObjectName("partner_name_edit")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.partner_name_edit)
+        self.formLayout.setWidget(
+            1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.partner_name_edit
+        )
         self.label_3 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -57,10 +69,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_3)
+        self.formLayout.setWidget(
+            2, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_3
+        )
         self.first_name_edit = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.first_name_edit.setObjectName("first_name_edit")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.first_name_edit)
+        self.formLayout.setWidget(
+            2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.first_name_edit
+        )
         self.label_4 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -68,10 +84,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_4)
+        self.formLayout.setWidget(
+            3, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_4
+        )
         self.last_name_edit = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.last_name_edit.setObjectName("last_name_edit")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.FieldRole, self.last_name_edit)
+        self.formLayout.setWidget(
+            3, QtWidgets.QFormLayout.ItemRole.FieldRole, self.last_name_edit
+        )
         self.label_5 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -79,10 +99,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_5)
+        self.formLayout.setWidget(
+            4, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_5
+        )
         self.middle_name_edit = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.middle_name_edit.setObjectName("middle_name_edit")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.FieldRole, self.middle_name_edit)
+        self.formLayout.setWidget(
+            4, QtWidgets.QFormLayout.ItemRole.FieldRole, self.middle_name_edit
+        )
         self.label_6 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -90,10 +114,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_6)
+        self.formLayout.setWidget(
+            5, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_6
+        )
         self.email_edit = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.email_edit.setObjectName("email_edit")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.ItemRole.FieldRole, self.email_edit)
+        self.formLayout.setWidget(
+            5, QtWidgets.QFormLayout.ItemRole.FieldRole, self.email_edit
+        )
         self.label_7 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -101,10 +129,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_7)
+        self.formLayout.setWidget(
+            6, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_7
+        )
         self.phone_edit = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.phone_edit.setObjectName("phone_edit")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.ItemRole.FieldRole, self.phone_edit)
+        self.formLayout.setWidget(
+            6, QtWidgets.QFormLayout.ItemRole.FieldRole, self.phone_edit
+        )
         self.label_8 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -112,10 +144,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_8)
+        self.formLayout.setWidget(
+            7, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_8
+        )
         self.address_edit = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.address_edit.setObjectName("address_edit")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.ItemRole.FieldRole, self.address_edit)
+        self.formLayout.setWidget(
+            7, QtWidgets.QFormLayout.ItemRole.FieldRole, self.address_edit
+        )
         self.label_9 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -123,10 +159,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
-        self.formLayout.setWidget(8, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_9)
+        self.formLayout.setWidget(
+            8, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_9
+        )
         self.INN_edit = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.INN_edit.setObjectName("INN_edit")
-        self.formLayout.setWidget(8, QtWidgets.QFormLayout.ItemRole.FieldRole, self.INN_edit)
+        self.formLayout.setWidget(
+            8, QtWidgets.QFormLayout.ItemRole.FieldRole, self.INN_edit
+        )
         self.label_10 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(9)
@@ -134,57 +174,95 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_10.setFont(font)
         self.label_10.setObjectName("label_10")
-        self.formLayout.setWidget(9, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_10)
+        self.formLayout.setWidget(
+            9, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_10
+        )
         self.rating_spinbox = QtWidgets.QSpinBox(parent=self.formLayoutWidget)
         self.rating_spinbox.setObjectName("rating_spinbox")
-        self.formLayout.setWidget(9, QtWidgets.QFormLayout.ItemRole.FieldRole, self.rating_spinbox)
+        self.formLayout.setWidget(
+            9, QtWidgets.QFormLayout.ItemRole.FieldRole, self.rating_spinbox
+        )
         self.save_button = QtWidgets.QPushButton(parent=self.formLayoutWidget)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive,
+            QtGui.QPalette.ColorRole.ButtonText,
+            brush,
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled,
+            QtGui.QPalette.ColorRole.ButtonText,
+            brush,
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush
+        )
         self.save_button.setPalette(palette)
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -194,61 +272,101 @@ class Ui_MainWindow(object):
         self.save_button.setFont(font)
         self.save_button.setStyleSheet("background-color: rgb(121, 197, 100);")
         self.save_button.setObjectName("save_button")
-        self.formLayout.setWidget(10, QtWidgets.QFormLayout.ItemRole.SpanningRole, self.save_button)
+        self.formLayout.setWidget(
+            10, QtWidgets.QFormLayout.ItemRole.SpanningRole, self.save_button
+        )
         self.cancel_button = QtWidgets.QPushButton(parent=self.formLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.cancel_button.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.cancel_button.sizePolicy().hasHeightForWidth()
+        )
         self.cancel_button.setSizePolicy(sizePolicy)
         self.cancel_button.setMinimumSize(QtCore.QSize(759, 0))
         self.cancel_button.setMaximumSize(QtCore.QSize(759, 16777215))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive,
+            QtGui.QPalette.ColorRole.ButtonText,
+            brush,
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled,
+            QtGui.QPalette.ColorRole.ButtonText,
+            brush,
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush
+        )
         self.cancel_button.setPalette(palette)
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -258,7 +376,9 @@ class Ui_MainWindow(object):
         self.cancel_button.setFont(font)
         self.cancel_button.setStyleSheet("background-color: rgb(121, 197, 100);")
         self.cancel_button.setObjectName("cancel_button")
-        self.formLayout.setWidget(11, QtWidgets.QFormLayout.ItemRole.SpanningRole, self.cancel_button)
+        self.formLayout.setWidget(
+            11, QtWidgets.QFormLayout.ItemRole.SpanningRole, self.cancel_button
+        )
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -283,6 +403,8 @@ class Ui_MainWindow(object):
         self.save_button.setText(_translate("MainWindow", "Сохранить"))
         self.cancel_button.setText(_translate("MainWindow", "Отмена"))
 
+
+
 class EditPartner(QtWidgets.QMainWindow):
     def __init__(self, partner_info: PartnerCardInfo):
         super().__init__()
@@ -290,21 +412,29 @@ class EditPartner(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.load_info()
+        self.load_partner_types()
 
     def load_info(self):
-        self.ui.partner_name_edit.setText(self.partner_info.partner_name) 
+        self.ui.partner_name_edit.setText(self.partner_info.partner_name)
         self.ui.first_name_edit.setText(self.partner_info.first_name)
         self.ui.last_name_edit.setText(self.partner_info.last_name)
         self.ui.middle_name_edit.setText(self.partner_info.middle_name)
 
-        # self.ui.email_edit.setText(self.partner_info.) имейл
+        self.ui.email_edit.setText(self.partner_info.email)
         self.ui.phone_edit.setText(self.partner_info.phone_partner)
-        # self.ui.address_edit.setText(self.partner_info.) адрес
-        # self.ui.INN_edit.setText(self.partner_info.) ИНН
+        self.ui.address_edit.setText(self.partner_info.address)
+        self.ui.INN_edit.setText(self.partner_info.inn_number)
         self.ui.rating_spinbox.setValue(self.partner_info.rating)
+
+    def load_partner_types(self):
+        types = db.get_partners_types()
+        for t in types:
+            self.ui.typeBox.addItem(t["name"], t["id"])
+
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

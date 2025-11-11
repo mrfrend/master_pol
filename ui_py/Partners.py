@@ -23,9 +23,11 @@ class Ui_Partners(object):
         self.main_layout = QtWidgets.QVBoxLayout()
         self.main_layout.setObjectName("main_layout")
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label.setStyleSheet("color: rgb(85, 255, 0);\n"
-"font: 75 14pt \"MS Shell Dlg 2\";\n"
-"font-weight: bold;")
+        self.label.setStyleSheet(
+            "color: rgb(85, 255, 0);\n"
+            'font: 75 14pt "MS Shell Dlg 2";\n'
+            "font-weight: bold;"
+        )
         self.label.setObjectName("label")
         self.main_layout.addWidget(self.label, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.scrollArea = QtWidgets.QScrollArea(parent=self.centralwidget)
@@ -43,49 +45,83 @@ class Ui_Partners(object):
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive,
+            QtGui.QPalette.ColorRole.ButtonText,
+            brush,
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled,
+            QtGui.QPalette.ColorRole.ButtonText,
+            brush,
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush
+        )
         brush = QtGui.QBrush(QtGui.QColor(121, 197, 100))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
+        palette.setBrush(
+            QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush
+        )
         self.AutoButton.setPalette(palette)
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -105,7 +141,6 @@ class Ui_Partners(object):
         self.statusbar.setObjectName("statusbar")
         Partners.setStatusBar(self.statusbar)
 
-
         self.retranslateUi(Partners)
         QtCore.QMetaObject.connectSlotsByName(Partners)
 
@@ -114,7 +149,6 @@ class Ui_Partners(object):
         Partners.setWindowTitle(_translate("Partners", "MainWindow"))
         self.label.setText(_translate("Partners", "Партнёры"))
         self.AutoButton.setText(_translate("Partners", "Добавить партнера"))
-
 
 
 class Partners(QtWidgets.QMainWindow):
@@ -129,6 +163,14 @@ class Partners(QtWidgets.QMainWindow):
         partners = db.show_partners()  # много строчек
         for partner in partners:
             discount = db.get_disc(int(partner["id"]))
+            with db.connection.cursor() as cur:
+                cur.execute(
+                    "SELECT email_partner, address, INN FROM partners WHERE id = %s",
+                    (partner["id"],),
+                )
+                result = cur.fetchone()
+                partner.update(result)
+
             partner_info = PartnerCardInfo(
                 partner["id"],
                 partner["type_name"],
@@ -136,7 +178,10 @@ class Partners(QtWidgets.QMainWindow):
                 partner["first_name_director"],
                 partner["last_name_director"],
                 partner["middle_name_director"],
+                partner["email_partner"],
                 partner["phone_partner"],
+                partner["address"],
+                partner["INN"],
                 partner["rating"],
                 discount,
             )
@@ -144,7 +189,7 @@ class Partners(QtWidgets.QMainWindow):
             partnerCard.double_clicked.connect(self.load_choices)
             self.ui.verticalLayout_2.addWidget(partnerCard)
 
-    #TODO: обработать двойной клик по карточке
+    # TODO: обработать двойной клик по карточке
     def load_choices(self, partner_info: PartnerCardInfo):
         from ui_py.AdminChoice import Admin
 
@@ -157,8 +202,10 @@ class Partners(QtWidgets.QMainWindow):
         self.AddPartner = AddPartner(partner_info)
         self.AddPartner.show()
 
+
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Partners = QtWidgets.QMainWindow()
     ui = Ui_Partners()

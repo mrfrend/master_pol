@@ -87,13 +87,18 @@ class PartnerCardInfo:
     first_name: str
     last_name: str
     middle_name: str | None
+    email: str
     phone_partner: str
+    address: str
+    inn_number: str
     rating: int
     discount: int
+
 
 # TODO: сделать дабклик
 class PartnerCard(QtWidgets.QFrame):
     double_clicked = QtCore.pyqtSignal(PartnerCardInfo)
+
     def __init__(self, partner_info: PartnerCardInfo):
         super().__init__()
         self.ui = Ui_Frame()

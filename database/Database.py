@@ -31,6 +31,12 @@ class Database:
             result = cur.fetchone() # {"get_disc(4)": 15}
             print(result)
             return result.get(f"get_disc({partner_id})")
+    
+    def get_partners_types(self):
+        with self.connection.cursor() as cur:
+            cur.execute("SELECT id, name from partners_type")
+            result = cur.fetchall()
+            return result
 
 
 db = Database(host="localhost", user="root", password="", db="master_pol")
