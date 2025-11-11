@@ -1,5 +1,6 @@
 import pymysql as pms
 from pymysql import cursors
+from dto.partner_card_info import PartnerAddDTO
 
 
 class Database:
@@ -41,6 +42,26 @@ class Database:
     def delete_partner(self, partner_id: int):
         with self.connection.cursor() as cur:
             cur.execute("DELETE FROM partners WHERE id = %s", (partner_id,))
+            self.connection.commit()
+            return
+
+    def insert_partner(self, partner_info: PartnerAddDTO):
+        with self.connection.cursor() as cur:
+            cur.callproc(
+                "add_parther",
+                (
+                    partner_info.type_id,
+                    partner_info.partner_name,
+                    partner_info.first_name,
+                    partner_info.last_name,
+                    partner_info.middle_name,
+                    partner_info.email,
+                    partner_info.phone_partner,
+                    partner_info.address,
+                    partner_info.inn_number,
+                    partner_info.rating,
+                ),
+            )
             self.connection.commit()
             return
 

@@ -71,6 +71,7 @@ class Partners(QtWidgets.QMainWindow):
         from .AddPartner import AddPartner
 
         self.AddPartner = AddPartner(partner_info)
+        self.AddPartner.inserted.connect(self.load_partners)
         self.AddPartner.show()
 
 
