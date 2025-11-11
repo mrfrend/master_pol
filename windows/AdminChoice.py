@@ -8,7 +8,7 @@ from dto.partner_card_info import PartnerCardInfo
 
 
 class Admin(QDialog):
-    deleted = pyqtSignal(PartnerCardInfo)
+    deleted = pyqtSignal()
 
     def __init__(self, partner_info: PartnerCardInfo):
         super().__init__()
@@ -38,7 +38,7 @@ class Admin(QDialog):
         if reply == QMessageBox.StandardButton.Yes:
             try:
                 db.delete_partner(self.partner_info.id)
-                self.deleted.emit(self.partner_info)
+                self.deleted.emit()
                 QMessageBox.information(self, "Успех", "Партнер удален")
             except pymysql.ProgrammingError as e:
                 QMessageBox.warning(self, "Ошибка удаления партнера", str(e))

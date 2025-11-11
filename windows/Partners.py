@@ -12,6 +12,7 @@ from dto.partner_card_info import PartnerCardInfo
 from interface.Partners import Ui_Partners
 from .PartnerCard import PartnerCard
 
+
 class Partners(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -21,6 +22,7 @@ class Partners(QtWidgets.QMainWindow):
         self.load_partners()
 
     def load_partners(self):
+        self.clear_layout()
         partners = db.show_partners()  # много строчек
         for partner in partners:
             discount = db.get_disc(int(partner["id"]))
@@ -50,11 +52,19 @@ class Partners(QtWidgets.QMainWindow):
             partnerCard.double_clicked.connect(self.load_choices)
             self.ui.verticalLayout_2.addWidget(partnerCard)
 
+    def clear_layout(self):
+        while self.ui.verticalLayout_2.count():
+            item = self.ui.verticalLayout_2.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.setParent(None)
+                widget.deleteLater()
+
     # TODO: обработать двойной клик по карточке
     def load_choices(self, partner_info: PartnerCardInfo):
         from .AdminChoice import Admin
-
         self.Admin = Admin(partner_info)
+        self.Admin.deleted.connect(self.load_partners)
         self.Admin.show()
 
     def on_clicked_add(self, partner_info):
