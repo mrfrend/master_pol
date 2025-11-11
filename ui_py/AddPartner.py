@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from .PartnerCard import PartnerCardInfo
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -283,25 +283,12 @@ class Ui_MainWindow(object):
         self.save_button.setText(_translate("MainWindow", "Сохранить"))
         self.cancel_button.setText(_translate("MainWindow", "Отмена"))
 
-class EditPartner(QtWidgets.QMainWindow):
-    def __init__(self, partner_info: PartnerCardInfo):
+class AddPartner(QtWidgets.QMainWindow):
+    def __init__(self, partner_info):
         super().__init__()
         self.partner_info = partner_info
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.load_info()
-
-    def load_info(self):
-        self.ui.partner_name_edit.setText(self.partner_info.partner_name) 
-        self.ui.first_name_edit.setText(self.partner_info.first_name)
-        self.ui.last_name_edit.setText(self.partner_info.last_name)
-        self.ui.middle_name_edit.setText(self.partner_info.middle_name)
-
-        # self.ui.email_edit.setText(self.partner_info.) имейл
-        self.ui.phone_edit.setText(self.partner_info.phone_partner)
-        # self.ui.address_edit.setText(self.partner_info.) адрес
-        # self.ui.INN_edit.setText(self.partner_info.) ИНН
-        self.ui.rating_spinbox.setValue(self.partner_info.rating)
 
 if __name__ == "__main__":
     import sys

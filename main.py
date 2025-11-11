@@ -1,6 +1,7 @@
 import sys
 from ui_py.AuthMain import AuthWindow
 from PyQt6.QtWidgets import QApplication
+from ui_py.PartnerCard import *
 
 
 if __name__=="__main__":

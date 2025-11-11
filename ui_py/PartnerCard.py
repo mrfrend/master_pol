@@ -99,11 +99,14 @@ class PartnerCard(QtWidgets.QFrame):
         self.ui = Ui_Frame()
         self.partner_info = partner_info
         self.ui.setupUi(self)
-        self.setData()  
+        self.setData()
 
-    def mouseDoubleClickEvent(self, a0):
+        self.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
+
+    def mouseDoubleClickEvent(self, event):
         self.double_clicked.emit(self.partner_info)
-        return super().mouseDoubleClickEvent(a0)
+        event.accept()
+
     def setData(self):
         fio = f"{self.partner_info.last_name} {self.partner_info.first_name} {self.partner_info.middle_name or ''}"
         self.ui.name.setText(fio)

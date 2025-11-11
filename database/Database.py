@@ -28,7 +28,7 @@ class Database:
     def get_disc(self, partner_id: int):
         with self.connection.cursor() as cur:
             cur.execute("SELECT get_disc(%s)", (partner_id,))
-            result = cur.fetchone()
+            result = cur.fetchone() # {"get_disc(4)": 15}
             print(result)
             return result.get(f"get_disc({partner_id})")
 
