@@ -149,13 +149,13 @@ class Ui_MainWindow(object):
         self.Autolabel_3.setText(
             _translate(
                 "MainWindow",
-                '<html><head/><body><p><span style=" font-size:12pt; font-style:italic;">Пароль:</span></p></body></html>',
+                '<html><head/><body><p><span style=" font-size:12pt; font-style:italic;">Логин:</span></p></body></html>',
             )
         )
         self.Autolabel_2.setText(
             _translate(
                 "MainWindow",
-                '<html><head/><body><p><span style=" font-size:12pt; font-style:italic;">Логин:</span></p></body></html>',
+                '<html><head/><body><p><span style=" font-size:12pt; font-style:italic;">Пароль:</span></p></body></html>',
             )
         )
         self.AutoButton.setText(_translate("MainWindow", "Войти"))
