@@ -38,6 +38,15 @@ class Database:
             result = cur.fetchall()
             return result
 
+    def get_partner_info(self, partner_id: int):
+        with self.connection.cursor() as cur:
+            cur.execute(
+                "SELECT partners.id, partners_type.name, partner_name, first_name_director, last_name_director, middle_name_director, email_partner, phone_partner, address, INN, rating FROM partners JOIN partners_type ON partners_type.id = partners.partner_type_id  WHERE partners.id = %s",
+                (partner_id,),
+            )
+            result = cur.fetchone()
+            return result
+
     def get_partner_history(self, partner_id: int):
         with self.connection.cursor() as cur:
             cur.callproc("partner_history", (partner_id,))

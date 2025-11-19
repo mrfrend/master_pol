@@ -8,6 +8,7 @@
 
 from PyQt6 import QtWidgets
 from PyQt6.QtCore import pyqtSignal
+
 from .PartnerCard import PartnerCardInfo
 from database.Database import db
 from interface.editPartner import Ui_MainWindow
@@ -26,6 +27,7 @@ class EditPartner(QtWidgets.QMainWindow):
         self.ui.save_button.clicked.connect(self.handle_save)
         self.load_info()
         self.load_partner_types()
+        self.ui.cancel_button.clicked.connect(self.close)
 
     def load_info(self):
         self.ui.partner_name_edit.setText(self.partner_info.partner_name)

@@ -34,6 +34,7 @@ class Admin(QDialog):
     def handle_history(self):
         self.PartnerHistory = PartnerHistory(self.partner_info.id)
         self.PartnerHistory.show()
+        self.close()
 
     def handle_delete(self):
         reply = QMessageBox.question(
