@@ -9,6 +9,7 @@ from dto.partner_card_info import PartnerCardInfo
 
 class Admin(QDialog):
     deleted = pyqtSignal()
+    edited = pyqtSignal(bool)
 
     def __init__(self, partner_info: PartnerCardInfo):
         super().__init__()
@@ -22,8 +23,10 @@ class Admin(QDialog):
         edit_button.clicked.connect(self.handle_save)
         delete_button.clicked.connect(self.handle_delete)
 
+
     def handle_save(self):
         self.EditPartner = EditPartner(self.partner_info)
+        self.EditPartner.edited.connect(lambda: self.edited.emit(True))
         self.EditPartner.show()
 
     def handle_delete(self):

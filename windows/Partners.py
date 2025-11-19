@@ -63,8 +63,10 @@ class Partners(QtWidgets.QMainWindow):
     # TODO: обработать двойной клик по карточке
     def load_choices(self, partner_info: PartnerCardInfo):
         from .AdminChoice import Admin
+
         self.Admin = Admin(partner_info)
         self.Admin.deleted.connect(self.load_partners)
+        self.Admin.edited.connect(self.load_partners)
         self.Admin.show()
 
     def on_clicked_add(self, partner_info):

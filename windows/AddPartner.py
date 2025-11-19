@@ -23,7 +23,7 @@ class AddPartner(QtWidgets.QMainWindow):
             self.ui.typeBox.addItem(t["name"], t["id"])
 
     def handle_save(self):
-        type_partner_id = self.ui.typeBox.currentData() + 1
+        type_partner_id = self.ui.typeBox.currentData()
         partner_name = self.ui.partner_name_edit.text()
         first_name = self.ui.first_name_edit.text()
         last_name = self.ui.last_name_edit.text()

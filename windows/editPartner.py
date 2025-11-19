@@ -7,17 +7,23 @@
 
 
 from PyQt6 import QtWidgets
+from PyQt6.QtCore import pyqtSignal
 from .PartnerCard import PartnerCardInfo
 from database.Database import db
 from interface.editPartner import Ui_MainWindow
+import pymysql
+from dto.partner_card_info import PartnerUpdateDTO
 
 
 class EditPartner(QtWidgets.QMainWindow):
+    edited = pyqtSignal(bool)
+
     def __init__(self, partner_info: PartnerCardInfo):
         super().__init__()
         self.partner_info = partner_info
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.save_button.clicked.connect(self.handle_save)
         self.load_info()
         self.load_partner_types()
 
@@ -37,6 +43,47 @@ class EditPartner(QtWidgets.QMainWindow):
         types = db.get_partners_types()
         for t in types:
             self.ui.typeBox.addItem(t["name"], t["id"])
+
+    def handle_save(self):
+        type_partner_id = self.ui.typeBox.currentData()
+        partner_name = self.ui.partner_name_edit.text()
+        first_name = self.ui.first_name_edit.text()
+        last_name = self.ui.last_name_edit.text()
+        middle_name = self.ui.middle_name_edit.text()
+        email = self.ui.email_edit.text()
+        phone = self.ui.phone_edit.text()
+        address = self.ui.address_edit.text()
+        INN = self.ui.INN_edit.text()
+        rating = self.ui.rating_spinbox.value()
+
+        try:
+
+            if not all(
+                [partner_name, first_name, last_name, email, phone, address, INN]
+            ):
+                raise ValueError("Заполните все поля")
+
+            partner_update = PartnerUpdateDTO(
+                id=self.partner_info.id,
+                type_id=type_partner_id,
+                partner_name=partner_name,
+                first_name=first_name,
+                last_name=last_name,
+                middle_name=middle_name,
+                email=email,
+                phone_partner=phone,
+                address=address,
+                inn_number=INN,
+                rating=rating,
+            )
+            db.update_partner(partner_update)
+            self.edited.emit(True)
+            QtWidgets.QMessageBox.information(self, "Успех", "Данные успешно обновлены")
+            self.close()
+
+        except (ValueError, pymysql.ProgrammingError) as e:
+            QtWidgets.QMessageBox.warning(self, "Ошибка", str(e))
+            return
 
 
 if __name__ == "__main__":

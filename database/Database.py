@@ -1,6 +1,6 @@
 import pymysql as pms
 from pymysql import cursors
-from dto.partner_card_info import PartnerAddDTO
+from dto.partner_card_info import PartnerAddDTO, PartnerUpdateDTO
 
 
 class Database:
@@ -30,7 +30,6 @@ class Database:
         with self.connection.cursor() as cur:
             cur.execute("SELECT get_disc(%s)", (partner_id,))
             result = cur.fetchone()  # {"get_disc(4)": 15}
-            print(result)
             return result.get(f"get_disc({partner_id})")
 
     def get_partners_types(self):
@@ -42,6 +41,27 @@ class Database:
     def delete_partner(self, partner_id: int):
         with self.connection.cursor() as cur:
             cur.execute("DELETE FROM partners WHERE id = %s", (partner_id,))
+            self.connection.commit()
+            return
+
+    def update_partner(self, partner_info: PartnerUpdateDTO):
+        with self.connection.cursor() as cur:
+            cur.callproc(
+                "upd_partner",
+                (
+                    partner_info.type_id,
+                    partner_info.id,
+                    partner_info.partner_name,
+                    partner_info.first_name,
+                    partner_info.last_name,
+                    partner_info.middle_name,
+                    partner_info.email,
+                    partner_info.phone_partner,
+                    partner_info.address,
+                    partner_info.inn_number,
+                    partner_info.rating,
+                ),
+            )
             self.connection.commit()
             return
 
