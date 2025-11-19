@@ -38,6 +38,36 @@ class Database:
             result = cur.fetchall()
             return result
 
+    def get_materials_types(self):
+        with self.connection.cursor() as cur:
+            cur.execute(
+                "SELECT id, name, defect_percent from materials_type",
+            )
+            result = cur.fetchall()
+            return result
+
+    def get_products_types(self):
+        with self.connection.cursor() as cur:
+            cur.execute("SELECT id, name, coefficent from products_types")
+            result = cur.fetchall()
+            return result
+
+    def get_product_type(self, product_type_id: int):
+        with self.connection.cursor() as cur:
+            cur.execute(
+                "SELECT * FROM products_types WHERE id = %s", (product_type_id,)
+            )
+            result = cur.fetchone()
+            return result
+
+    def get_material_type(self, material_type_id: int):
+        with self.connection.cursor() as cur:
+            cur.execute(
+                "SELECT * FROM materials_type WHERE id = %s", (material_type_id,)
+            )
+            result = cur.fetchone()
+            return result
+
     def get_partner_info(self, partner_id: int):
         with self.connection.cursor() as cur:
             cur.execute(

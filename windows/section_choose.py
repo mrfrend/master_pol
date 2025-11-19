@@ -20,4 +20,8 @@ class SectionChoose(QWidget, Ui_Form):
         self.close()
 
     def handle_materials(self):
-        pass
+        from .material_calculate import MaterialWindow
+
+        self.MaterialWindow = MaterialWindow()
+        self.MaterialWindow.show()
+        self.close()
