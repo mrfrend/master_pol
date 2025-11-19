@@ -38,6 +38,12 @@ class Database:
             result = cur.fetchall()
             return result
 
+    def get_partner_history(self, partner_id: int):
+        with self.connection.cursor() as cur:
+            cur.callproc("partner_history", (partner_id,))
+            result = cur.fetchall()
+            return result
+
     def delete_partner(self, partner_id: int):
         with self.connection.cursor() as cur:
             cur.execute("DELETE FROM partners WHERE id = %s", (partner_id,))
