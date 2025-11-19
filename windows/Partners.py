@@ -11,6 +11,7 @@ from database.Database import db
 from dto.partner_card_info import PartnerCardInfo
 from interface.Partners import Ui_Partners
 from .PartnerCard import PartnerCard
+from .section_choose import SectionChoose
 
 
 class Partners(QtWidgets.QMainWindow):
@@ -20,6 +21,12 @@ class Partners(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.ui.AutoButton.clicked.connect(self.on_clicked_add)
         self.load_partners()
+        self.ui.back_button.clicked.connect(self.handle_back)
+
+    def handle_back(self):
+        self.section_choose = SectionChoose()
+        self.section_choose.show()
+        self.close()
 
     def load_partners(self):
         self.clear_layout()

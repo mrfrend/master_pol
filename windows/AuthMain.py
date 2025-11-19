@@ -25,11 +25,10 @@ class AuthWindow(QtWidgets.QMainWindow):
 
         if db.authorize_user(username, password):
             QtWidgets.QMessageBox.information(self, "Успех", "Авторизованы")
-            from .Partners import Partners
+            from .section_choose import SectionChoose
 
-            self.partners = Partners()
-            self.partners.show()
+            self.section_choose = SectionChoose()
+            self.section_choose.show()
             self.close()
-
         else:
             QtWidgets.QMessageBox.warning(self, "Error", "Ошибка")
